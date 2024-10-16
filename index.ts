@@ -33,17 +33,24 @@ const customError = (error: Error, name?: string): CustomError => {
   if (!(error instanceof Error)) {
     throw new Error('Only accept instances of Error')
   }
-  const sError: CustomError = error
 
-  sError['toJSON'] = function () {
-    return {
-      [errorToken]: true,
-      name: this.name,
-      message: this.message,
+  Object.defineProperties(error, {
+    [errorToken]: {
+      enumerable: false,
+      writable: false,
+      value: true
+    },
+    toJSON: {
+      enumerable: false,
+      value: function () {
+        return {
+          [errorToken]: true,
+          name: this.name,
+          message: this.message,
+        }
+      }
     }
-  }
-
-  sError[errorToken] = true
+  })
 
   if (name) {
     error.name = name
