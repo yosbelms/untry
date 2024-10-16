@@ -57,8 +57,8 @@ const createResult = <T>(val: ValueOrError<T>): Catch<T> => {
   return (isCustomError(val as Error) ? [void 0, val] : [val, void 0]) as unknown as Catch<T>
 }
 
-function untry<F extends (defer?: Defer) => ValueOrError<any>>(fn: F): Catch<ReturnType<F>>;
 function untry<F extends (defer?: Defer) => PromiseLike<any>>(fn: F): PromiseLike<Catch<ThenArg<ReturnType<F>>>>;
+function untry<F extends (defer?: Defer) => ValueOrError<any>>(fn: F): Catch<ReturnType<F>>;
 function untry<F extends (defer?: Defer) => any>(fn: F): Catch<ReturnType<F>>;
 function untry(fn: Function): any {
   let deferred: Deferred = () => { }
