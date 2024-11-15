@@ -47,6 +47,7 @@ const customError = (error: Error, name?: string): CustomError => {
           [errorToken]: true,
           name: this.name,
           message: this.message,
+          stack: this.stack
         }
       }
     }
