@@ -1,6 +1,6 @@
 {
   "name": "untry",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Better error handling in JavaScript",
   "keywords": ["error", "try-catch", "handling"],
   "repository": "https://github.com/yosbelms/untry.git",
