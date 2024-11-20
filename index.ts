@@ -30,10 +30,6 @@ export type CustomError = Error & {
 }
 
 const customError = (error: Error, name?: string): CustomError => {
-  if (!(error instanceof Error)) {
-    throw new Error('Only accept instances of Error')
-  }
-
   Object.defineProperties(error, {
     [errorToken]: {
       enumerable: false,
